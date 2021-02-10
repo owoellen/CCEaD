@@ -125,7 +125,7 @@
 
 Decryption:
           1. Type encrypted text into left box.
-          2. Add shift amount into middle text box.
+          2. Add shift amount into middle text box, but make the value negative.
           3. Click the Encrypt / Decrypt button.
 </value>
   </data>
