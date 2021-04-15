@@ -40,12 +40,13 @@ namespace CCEaD
             this.NoEText = new System.Windows.Forms.TextBox();
             this.EoDText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.shiftAmount = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.shiftAmount = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.shiftAmount)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -70,14 +71,14 @@ namespace CCEaD
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem1.Text = "About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
@@ -117,13 +118,6 @@ namespace CCEaD
             this.label2.Text = "Shift";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // shiftAmount
-            // 
-            this.shiftAmount.Location = new System.Drawing.Point(329, 126);
-            this.shiftAmount.Name = "shiftAmount";
-            this.shiftAmount.Size = new System.Drawing.Size(130, 20);
-            this.shiftAmount.TabIndex = 5;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(329, 150);
@@ -151,7 +145,7 @@ namespace CCEaD
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 13);
             this.label4.TabIndex = 10;
-            this.label4.Text = "v1.1\r\n";
+            this.label4.Text = "v1.2";
             // 
             // checkBox1
             // 
@@ -164,16 +158,23 @@ namespace CCEaD
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // shiftAmount
+            // 
+            this.shiftAmount.Location = new System.Drawing.Point(329, 126);
+            this.shiftAmount.Name = "shiftAmount";
+            this.shiftAmount.Size = new System.Drawing.Size(130, 20);
+            this.shiftAmount.TabIndex = 12;
+            // 
             // CCEaD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 361);
+            this.Controls.Add(this.shiftAmount);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.shiftAmount);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.EoDText);
             this.Controls.Add(this.NoEText);
@@ -186,9 +187,26 @@ namespace CCEaD
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.shiftAmount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string NoEInput = NoEText.Text;
+
+
+
+            int shiftInput = Int32.Parse(shiftAmount.Text);
+
+            if (checkBox1.Checked)
+            {
+                shiftInput = -shiftInput;
+            }
+
+            EoDText.Text = Encrypt(NoEInput.ToLower(), shiftInput);
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -207,12 +225,12 @@ namespace CCEaD
         private System.Windows.Forms.TextBox NoEText;
         private System.Windows.Forms.TextBox EoDText;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox shiftAmount;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.NumericUpDown shiftAmount;
     }
 }
 

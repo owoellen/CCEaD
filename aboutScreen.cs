@@ -21,5 +21,10 @@ namespace CCEaD
         {
 
         }
+
+        private void aboutScreen_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

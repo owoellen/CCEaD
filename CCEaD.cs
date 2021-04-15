@@ -22,21 +22,7 @@ namespace CCEaD
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-
-            string NoEInput = NoEText.Text;
-            
-            int shiftInput = Int32.Parse(shiftAmount.Text);
-
-            if (checkBox1.Checked)
-            {
-                shiftInput = -shiftInput;
-            }
-
-            EoDText.Text = Encrypt(NoEInput.ToLower(), shiftInput);
-        }
+        
 
         static string Encrypt(string value, int shift)
         {
@@ -83,7 +69,6 @@ namespace CCEaD
             NoEText = noEText;
             EoDText = eoDText;
             this.label2 = label2;
-            this.shiftAmount = shiftAmount;
             this.button1 = button1;
             this.label3 = label3;
             this.aboutToolStripMenuItem1 = aboutToolStripMenuItem1;
@@ -93,6 +78,14 @@ namespace CCEaD
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void TXTB_ONLY_NUMBER_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
